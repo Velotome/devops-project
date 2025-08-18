@@ -5,15 +5,24 @@ A small project to put devops principles and technologies into practice
 
 Build the container with ```docker build devops-project```
 
-Run the container with ```docker run devops-project```
+Run the container with ```docker run --name=devops-project --detached devops-project```
+
+Check container logs with ```docker logs devops-project```
 
 # Tools used
+
+## Devops
 - [Docker](https://docs.docker.com/) : Containerization
+
+## Web
+- [FastAPI](https://fastapi.tiangolo.com/) : Python web framework
+- [openSenseMap](https://opensensemap.org/) : Open-source public api with sensor data around the world
+
+## Development
 - [Hadolint](https://github.com/hadolint/hadolint) : A dockerfile linter to ensure best practices are implemented
 - [Pylint](https://pypi.org/project/pylint/) : A static code analyzer for python. Same goal as Hadolint but for python
 
-# Git commit convention
-
+# Git commit naming convention
 - feat : For newly added functionnality
 - fix : For bugfixing
 - doc : For documentation updating (comments, readme, etc ...)
@@ -23,4 +32,4 @@ Run the container with ```docker run devops-project```
 I learned most of the skill and technologies required from the following resources :
 - https://devopsroadmap.io/ : introduction to devops
 - https://blog.stephane-robert.info/ : DevSecOps tutorials in french
-- the various documentations for the tools used
+- the documentations for the tools listed in [Tools](#tools-used)
