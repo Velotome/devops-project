@@ -8,3 +8,9 @@ Build the app
 
 Run the app
 ```docker run devops-project```
+
+# Git commit convention
+
+- feat : For newly added functionnality
+- fix : For bugfixing
+- doc : For documentation updating (comments, readme, etc ...)
