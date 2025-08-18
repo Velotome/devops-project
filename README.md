@@ -23,13 +23,14 @@ Check container logs with ```docker logs devops-project```
 - [Pylint](https://pypi.org/project/pylint/) : A static code analyzer for python. Same goal as Hadolint but for python
 
 # Git commit naming convention
-- feat : For newly added functionnality
-- fix : For bugfixing
-- doc : For documentation updating (comments, readme, etc ...)
+- feat : for newly added functionnality
+- fix : for bugfixing
+- doc : for documentation updating (comments, readme, etc ...)
+- refactor : for changes that do not have fucntionnal impact such as typos, unused variables/import or code "style" rewrite
 
 # References
 
-I learned most of the skill and technologies required from the following resources :
+I learnt most of the skill and technologies required from the following resources :
 - https://devopsroadmap.io/ : introduction to devops
 - https://blog.stephane-robert.info/ : DevSecOps tutorials in french
 - the documentations for the tools listed in [Tools](#tools-used)
