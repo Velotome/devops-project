@@ -3,11 +3,9 @@ A small project to put devops principles and technologies into practice
 
 # Usage
 
-Build the app
-```docker build devops-project```
+Build the container with ```docker build devops-project```
 
-Run the app
-```docker run devops-project```
+Run the container with ```docker run devops-project```
 
 # Git commit convention
 
