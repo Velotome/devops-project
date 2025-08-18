@@ -1,2 +1,2 @@
 # devops-project
-A smal projet to put devops principles and technologies into practice
+A small projet to put devops principles and technologies into practice
