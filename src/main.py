@@ -1,5 +1,4 @@
 from fastapi import FastAPI
-import requests
 from _version import __version__
 
 from senseBox import SenseBox
