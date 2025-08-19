@@ -11,6 +11,7 @@ class SenseBox:
         self.average_temp = "N/A"
         self.max_measurements = 20
         self.l_measurements = []
+        self.last_update = "N/A"
 
     def __str__(self):
         ret = f"""
@@ -51,12 +52,16 @@ class SenseBox:
                             "timestamp": sensor["lastMeasurement"]["createdAt"],
                             "temperature": float(sensor["lastMeasurement"]["value"])
                             })
+                        
+                        self.last_update = sensor["lastMeasurement"]["createdAt"]
 
 
                 data_collected = True
                 print("Data successfully collected")
             except requests.exceptions.ReadTimeout:
                 print("Request has timed out, retrying...")
+            except requests.exceptions.JSONDecodeError:
+                print("Decoding failed, retrying...")
         
         if not data_collected:
             print("Request has timed out too many times, No data gathered")
