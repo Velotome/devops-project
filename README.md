@@ -28,7 +28,7 @@ Alternatively, you can use the test-docker.sh that will remove the old container
 ## Testing
 - [Pytest](https://docs.pytest.org/en/stable/) : Python testing framework, used for unit test
 
-# Git commit naming convention
+## Git commit naming convention
 - feat : for newly added functionnality
 - fix : for bugfixing
 - doc : for documentation updating (comments, readme, etc ...)
