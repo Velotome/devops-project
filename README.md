@@ -5,7 +5,7 @@ A small project to put devops principles and technologies into practice
 
 Build the container with ```docker build --tag devops-project .```
 
-Run the container with ```docker run --name=devops-project -d devops-project```
+Run the container with ```docker run --name=devops-project -d --network host -p 8000:8000 devops-project```
 
 Check container logs with ```docker logs -f devops-project```
 
