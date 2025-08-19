@@ -3,11 +3,13 @@ A small project to put devops principles and technologies into practice
 
 # Usage
 
-Build the container with ```docker build --tag devops-project```
+Build the container with ```docker build --tag devops-project .```
 
-Run the container with ```docker run --name=devops-project --detached devops-project```
+Run the container with ```docker run --name=devops-project -d devops-project```
 
-Check container logs with ```docker logs devops-project```
+Check container logs with ```docker logs -f devops-project```
+
+Alternatively, you can use the test-docker.sh that will remove the old container before creating a new one and running it. This is what I used while developping the app
 
 # Tools used
 
@@ -27,6 +29,7 @@ Check container logs with ```docker logs devops-project```
 - fix : for bugfixing
 - doc : for documentation updating (comments, readme, etc ...)
 - refactor : for changes that do not have fucntionnal impact such as typos, unused variables/import or code "style" rewrite
+- prod : for changes concerning docker, jenkins, scripts and other production related modification
 
 # References
 
