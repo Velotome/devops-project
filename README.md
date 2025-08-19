@@ -3,7 +3,7 @@ A small project to put devops principles and technologies into practice
 
 # Usage
 
-Build the container with ```docker build devops-project```
+Build the container with ```docker build --tag devops-project```
 
 Run the container with ```docker run --name=devops-project --detached devops-project```
 
