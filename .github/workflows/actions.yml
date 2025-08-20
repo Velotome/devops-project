@@ -2,9 +2,9 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
 
@@ -24,6 +24,7 @@ jobs:
       run: docker run --name=devops-project -d --network host devops-project
  
   build-tests:
+    needs: run-app
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
@@ -31,7 +32,7 @@ jobs:
       run: docker build --file Dockerfile --tag devops-project-test:$(date +%s) --target devops-project-test .
 
   run-tests:
-    needs: run-app
+    needs: build-tests
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
