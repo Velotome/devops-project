@@ -24,11 +24,15 @@ Check container logs with ```docker logs -f devops-project-test```
 ## Devops
 - [Docker](https://docs.docker.com/) : Containerization
 
+## CI/CD
+- [Github Actions](https://github.com/features/actions) : CI/CD workflow similar to jenkins
+
 ## Web
 - [FastAPI](https://fastapi.tiangolo.com/) : Python web framework
 - [openSenseMap](https://opensensemap.org/) : Open-source public api with sensor data around the world
 
 ## Development
+- [Git & Github](https://github.com/) : version control system and hosting
 - [Visual Studio Code](https://code.visualstudio.com/) : IDE (not really and IDE but kinda)
 - [Hadolint](https://github.com/hadolint/hadolint) : A dockerfile linter to ensure best practices are implemented
 - [Pylint](https://pypi.org/project/pylint/) : A static code analyzer for python. Same goal as Hadolint but for python
