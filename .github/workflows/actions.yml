@@ -8,7 +8,7 @@ on:
 
 jobs:
 
-  build-app:
+  app:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
@@ -17,8 +17,8 @@ jobs:
     - name: Run the app image
       run: docker run --name=devops-project -d --network host devops-project:latest
  
-  build-tests:
-    needs: run-app
+  tests:
+    needs: app
     runs-on: ubuntu-latest
     steps:
     - name: Build the tests image
