@@ -28,7 +28,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the tests image
-    - run: docker build --file Dockerfile --tag devops-project-test:$(date +%s) --target devops-project-test .
+      run: docker build --file Dockerfile --tag devops-project-test:$(date +%s) --target devops-project-test .
 
   run-tests:
     needs: run-app
