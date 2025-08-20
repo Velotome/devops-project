@@ -21,6 +21,7 @@ jobs:
     needs: app
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v4
     - name: Build the tests image
       run: docker build --file Dockerfile --tag devops-project-test:latest --target devops-project-test .
     - name: Run the tests image
