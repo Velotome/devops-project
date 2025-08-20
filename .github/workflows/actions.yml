@@ -1,0 +1,37 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build-app:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build the app image
+      run: docker build --file Dockerfile --tag devops-project:$(date +%s) --target devops-project .
+
+  run-app:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Run the app image
+      run: docker run --name=devops-project -d --network host devops-project
+ 
+  build-tests:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build the tests image
+      run: docker build --file Dockerfile --tag devops-project-test:$(date +%s) --target devops-project-test .
+
+  run-tests:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Run the tests image
+      run: docker run --name=devops-project-test -d --network host devops-project-test
