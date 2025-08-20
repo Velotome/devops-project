@@ -16,6 +16,7 @@ jobs:
       run: docker build --file Dockerfile --tag devops-project:$(date +%s) --target devops-project .
 
   run-app:
+    needs: build-app
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
@@ -27,9 +28,10 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the tests image
-      run: docker build --file Dockerfile --tag devops-project-test:$(date +%s) --target devops-project-test .
+    - run: docker build --file Dockerfile --tag devops-project-test:$(date +%s) --target devops-project-test .
 
   run-tests:
+    needs: run-app
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
