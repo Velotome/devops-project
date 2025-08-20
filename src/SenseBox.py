@@ -8,9 +8,9 @@ class SenseBox:
         self.unique_id = unique_id
         self.name = "N/A"
         self.location = "N/A"
-        self.average_temp = "N/A"
         self.max_measurements = 20
         self.l_measurements = []
+        self.temperature = "N/A"
         self.last_update = "N/A"
 
     def __str__(self):
@@ -18,7 +18,6 @@ class SenseBox:
           Sensebox {self.name} :
           - unique_id = {self.unique_id}
           - location = {self.location}
-          - temperature average = {self.average_temp}
           - number of measurements = {len(self.l_measurements)}
           - last measurements = {self.l_measurements[len(self.l_measurements)-1]}"""
         return ret
@@ -26,7 +25,6 @@ class SenseBox:
     def run(self):
         """Run this SenseBox"""
         self.gather_data()
-        self.compute_average_temp()
 
     def gather_data(self):
         """Method to gather sensorBox data using an http GET request to opensensemap"""
@@ -54,6 +52,7 @@ class SenseBox:
                             })
                         
                         self.last_update = sensor["lastMeasurement"]["createdAt"]
+                        self.temperature = float(sensor["lastMeasurement"]["value"])
 
 
                 data_collected = True
@@ -65,9 +64,3 @@ class SenseBox:
         
         if not data_collected:
             print("Request has timed out too many times, No data gathered")
-    
-    def compute_average_temp(self):
-        """Compute average temp for this senseBox"""
-        
-        temps = [d_mesurement["temperature"] for d_mesurement in self.l_measurements]
-        self.average_temp = np.mean(temps)
