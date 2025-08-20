@@ -1,8 +1,5 @@
 import numpy as np
 
-from SenseBox import SenseBox
-
-
 class SenseBoxMonitor:
 
     def __init__(self):
