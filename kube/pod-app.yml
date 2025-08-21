@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-app
+  namespace: devops-project
+spec:
+  containers:
+  - name: conteneur-app
+    imagePullPolicy: Never
+    image: app
