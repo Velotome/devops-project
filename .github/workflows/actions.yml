@@ -12,11 +12,11 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Pylint
-      run: pylint --disable=C,R $(git ls-files '*.py')
+      run: echo "Running Pylint..." && pylint --disable=C,R $(git ls-files '*.py')
     - name: Build the app image
-      run: docker build --file Dockerfile --tag devops-project:latest --target devops-project .
+      run: echo "Building app image..." && docker build --file Dockerfile --tag devops-project:latest --target devops-project .
     - name: Run the app image
-      run: docker run --name=devops-project -d --network host devops-project:latest
+      run: echo "Running app image..." && docker run --name=devops-project -d --network host devops-project:latest
  
   tests:
     needs: app
@@ -24,6 +24,6 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the tests image
-      run: docker build --file Dockerfile --tag devops-project-test:latest --target devops-project-test .
+      run: echo "Building Tests..." && docker build --file Dockerfile --tag devops-project-test:latest --target devops-project-test .
     - name: Run the tests image
-      run: docker run --name=devops-project-test -d --network host devops-project-test:latest
+      run: echo "Running Tests..." && docker run --name=devops-project-test -d --network host devops-project-test:latest
