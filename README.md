@@ -3,21 +3,21 @@ A small project to put devops principles and technologies into practice
 
 # Usage
 
-Build the app container with ```docker build --tag devops-project --target devops-project .```
+Build the app container with ```docker build --tag app --target app .```
 
-Run the app container with ```docker run --name=devops-project -d --network host devops-project```
+Run the app container with ```docker run --name=app -d --network host app```
 
-Check container logs with ```docker logs -f devops-project```
+Check container logs with ```docker logs -f app```
 
 # Testing
 
 With an app container running as shown in [previous step](#usage)
 
-Build the testing container with ```docker build --tag devops-project-test --target devops-project-test .```
+Build the testing container with ```docker build --tag test --target test .```
 
-Run the container with ```docker run --name=devops-project-test -d --network host devops-project-test```
+Run the container with ```docker run --name=test -d --network host test```
 
-Check container logs with ```docker logs -f devops-project-test```
+Check container logs with ```docker logs -f test```
 
 # Tools used
 
