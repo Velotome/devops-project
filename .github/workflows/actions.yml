@@ -12,7 +12,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Install Pylint
-      run: pip install pylint
+      run: pip install -r requirements.txt
     - name: Pylint
       run: echo "Running Pylint..." && pylint --disable=C,R $(git ls-files '*.py')
     - name: Build the app image
