@@ -1,5 +1,5 @@
 import requests
-import numpy as np
+
 
 class SenseBox:
     """Class representing a senseBox"""
@@ -29,31 +29,38 @@ class SenseBox:
     def gather_data(self):
         """Method to gather sensorBox data using an http GET request to opensensemap"""
 
-        print(f"{self.unique_id} | Gathering data from opensense.com ... ", end="", flush=True)
+        print(
+            f"{self.unique_id} | Gathering data from opensense.com ... ",
+            end="",
+            flush=True,
+        )
         url = f"https://api.opensensemap.org/boxes/{self.unique_id}?format=json"
         data_collected = False
         tries = 0
 
-        while not data_collected or tries>3:
+        while not data_collected or tries > 3:
             tries += 1
             try:
                 data = requests.get(url, timeout=30).json()
-                
+
                 self.name = data["name"]
                 self.location = data["currentLocation"]["coordinates"]
                 for sensor in data["sensors"]:
                     if sensor["title"] == "Temperatur":
                         if len(self.l_measurements) >= self.max_measurements:
                             self.l_measurements.pop(0)
-                        
-                        self.l_measurements.append({
-                            "timestamp": sensor["lastMeasurement"]["createdAt"],
-                            "temperature": float(sensor["lastMeasurement"]["value"])
-                            })
-                        
+
+                        self.l_measurements.append(
+                            {
+                                "timestamp": sensor["lastMeasurement"]["createdAt"],
+                                "temperature": float(
+                                    sensor["lastMeasurement"]["value"]
+                                ),
+                            }
+                        )
+
                         self.last_update = sensor["lastMeasurement"]["createdAt"]
                         self.temperature = float(sensor["lastMeasurement"]["value"])
-
 
                 data_collected = True
                 print("Data successfully collected")
@@ -61,6 +68,6 @@ class SenseBox:
                 print("Request has timed out, retrying...")
             except requests.exceptions.JSONDecodeError:
                 print("Decoding failed, retrying...")
-        
+
         if not data_collected:
             print("Request has timed out too many times, No data gathered")
