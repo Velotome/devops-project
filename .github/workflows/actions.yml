@@ -17,7 +17,7 @@ jobs:
       run: echo "Building app image..." && docker build --file Dockerfile --tag devops-project:latest --target devops-project .
     - name: Run the app image
       run: echo "Running app image..." && docker run --name=devops-project -d --network host devops-project:latest
- 
+
   tests:
     needs: app
     runs-on: ubuntu-latest

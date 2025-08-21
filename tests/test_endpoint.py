@@ -20,7 +20,7 @@ def collect_data(endpoint : str):
             print("Request has timed out, retrying...")
         except requests.exceptions.JSONDecodeError:
             print("Decoding failed, retrying...")
-        
+
     if not data_collected:
         print("Request has timed out too many times, No data gathered")
 
@@ -38,7 +38,7 @@ class TestSenseBox:
 
     def test_endpoint_temperature(self):
         """This test ensure that the temperature returned by the endpoint is the same as the one calculated"""
-        
+
         # Test
         self.monitor.run(self.l_sense_box)
         remote_temp = collect_data("temperature")
