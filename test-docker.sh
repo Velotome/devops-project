@@ -1,5 +1,3 @@
-echo "Removing previous container ..."
-docker rm -f devops-project
-docker build --tag app .
-echo "Running container ..."
+docker rm -f app
+docker build --tag app --target app .
 docker run --name=app -d --network host app

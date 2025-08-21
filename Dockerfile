@@ -1,11 +1,11 @@
-FROM python:3.12-slim AS devops-project
+FROM python:3.12-slim AS app
 WORKDIR /src
 COPY /src .
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 CMD ["fastapi", "dev", "main.py"]
 
-FROM python:3.12-slim AS devops-project-test
+FROM python:3.12-slim AS test
 WORKDIR /src
 COPY /src .
 WORKDIR /tests
