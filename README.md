@@ -36,6 +36,7 @@ Check container logs with ```docker logs -f devops-project-test```
 - [Visual Studio Code](https://code.visualstudio.com/) : IDE (not really and IDE but kinda)
 - [Hadolint](https://github.com/hadolint/hadolint) : A dockerfile linter to ensure best practices are implemented
 - [Pylint](https://pypi.org/project/pylint/) : A static code analyzer for python. Same goal as Hadolint but for python
+- [Black](https://github.com/psf/black) : Code formatter
 
 ## Testing
 - [Pytest](https://docs.pytest.org/en/stable/) : Python testing framework, used for unit test

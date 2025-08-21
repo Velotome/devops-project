@@ -1,40 +1,31 @@
-name: Docker Image CI
-
+name: Production & Tests
 on:
   push:
-    branches: ["main"]
+    branches: ["main", "dev"]
   pull_request:
     branches: ["main"]
 
 jobs:
 
-  build-app:
+  app:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+    - name: Install Pylint
+      run: pip install -r requirements.txt
+    - name: Pylint
+      run: echo "Running Pylint..." && pylint --disable=C,R $(git ls-files '*.py')
     - name: Build the app image
-      run: docker build --file Dockerfile --tag devops-project:$(date +%s) --target devops-project .
-
-  run-app:
-    needs: build-app
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
+      run: echo "Building app image..." && docker build --file Dockerfile --tag devops-project:latest --target devops-project .
     - name: Run the app image
-      run: docker run --name=devops-project -d --network host devops-project
- 
-  build-tests:
-    needs: run-app
+      run: echo "Running app image..." && docker run --name=devops-project -d --network host devops-project:latest
+
+  tests:
+    needs: app
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
     - name: Build the tests image
-      run: docker build --file Dockerfile --tag devops-project-test:$(date +%s) --target devops-project-test .
-
-  run-tests:
-    needs: build-tests
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
+      run: echo "Building Tests..." && docker build --file Dockerfile --tag devops-project-test:latest --target devops-project-test .
     - name: Run the tests image
-      run: docker run --name=devops-project-test -d --network host devops-project-test
+      run: echo "Running Tests..." && docker run --name=devops-project-test -d --network host devops-project-test:latest
