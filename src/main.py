@@ -20,10 +20,8 @@ monitor.run(l_sense_box)
 
 @app.get("/temperature")
 async def read_temperature():
-    item = {"temperature": monitor.average_temperature,
-            "status": monitor.status}
+    item = {"temperature": monitor.average_temperature, "status": monitor.status}
     return item
-
 
 
 @app.get("/version")
